@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inam ul Haq — Senior Shopify Theme Developer</title>
+<meta name="description" content="Senior Shopify Theme Developer specialising in custom Liquid architecture, storefront implementation, and multi-market builds. 10+ years, 300+ projects, 100% Job Success Score.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0A0A;
+    --surface: #111318;
+    --surface-alt: #161B22;
+    --surface-green: #0D1A0D;
+    --accent: #4ADE80;
+    --accent-hover: #22C55E;
+    --text: #F8FAFC;
+    --text-muted: #94A3B8;
+    --border: #1E293B;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-w: 1200px;
+    --radius: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #000 !important;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent-hover) !important; color: #000 !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 24px 80px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .hero-title .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.85em;
+    background: var(--accent);
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-subtitle strong { color: var(--text); }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  .trust-bar {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .trust-item {}
+
+  .trust-number {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .trust-number span { color: var(--accent); }
+
+  .trust-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-family: var(--font-mono);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 96px 24px;
+  }
+
+  .section-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .section-lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--surface); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .about-text p strong { color: var(--text); }
+
+  .about-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .fact-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .fact-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--surface-green);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 18px;
+  }
+
+  .fact-content h4 {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .fact-content p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--bg); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--surface-green);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(74,222,128,0.08);
+    border: 1px solid rgba(74,222,128,0.2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── STORES ── */
+  #stores { background: var(--surface); }
+
+  .stores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .store-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .store-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .store-vertical {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    display: inline-block;
+    background: rgba(74,222,128,0.08);
+    border: 1px solid rgba(74,222,128,0.2);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .store-name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .store-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .store-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .store-link svg { color: var(--accent); }
+
+  .store-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .store-feature {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+  }
+
+  /* ── TECH STACK ── */
+  #stack { background: var(--bg); }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .stack-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.2s;
+  }
+
+  .stack-item:hover { border-color: var(--accent); }
+
+  .stack-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background: var(--surface-green);
+    flex-shrink: 0;
+  }
+
+  .stack-name {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .stack-level {
+    font-size: 11px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    margin-top: 2px;
+  }
+
+  /* ── REVIEWS ── */
+  #reviews { background: var(--surface); overflow: hidden; }
+
+  .reviews-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .reviews-scroll::-webkit-scrollbar { height: 4px; }
+  .reviews-scroll::-webkit-scrollbar-track { background: transparent; }
+  .reviews-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .review-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    min-width: 340px;
+    max-width: 340px;
+    flex-shrink: 0;
+  }
+
+  .review-stars {
+    color: var(--accent);
+    font-size: 14px;
+    margin-bottom: 14px;
+    letter-spacing: 2px;
+  }
+
+  .review-text {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .review-text::before { content: '\201C'; }
+  .review-text::after { content: '\201D'; }
+
+  .review-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .review-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--surface-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .review-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .review-source {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: 1px;
+  }
+
+  /* ── PLATFORMS ── */
+  #platforms { background: var(--bg); }
+
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .platform-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, transform 0.2s;
+    text-align: center;
+  }
+
+  .platform-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .platform-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .platform-metric {
+    font-size: 13px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    margin-bottom: 20px;
+  }
+
+  .platform-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .platform-stat-value {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .platform-stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: 2px;
+  }
+
+  .platform-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--surface-green); border-top: 1px solid rgba(74,222,128,0.15); }
+
+  .contact-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .contact-left h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .contact-left p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .contact-email {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.2s;
+  }
+
+  .contact-email:hover { opacity: 0.8; }
+
+  .contact-form {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px;
+  }
+
+  .form-row {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-textarea { min-height: 120px; resize: vertical; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: var(--accent-hover); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+  }
+
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text);
+  }
+
+  .footer-name span { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(10,10,10,0.97);
+      padding: 24px;
+      gap: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .stores-grid { grid-template-columns: 1fr 1fr; }
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    .platforms-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 580px) {
+    .stores-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-bar { gap: 32px; }
+    #hero { padding: 90px 20px 60px; }
+    section { padding: 72px 20px; }
+  }
+
+  /* ── UTILITIES ── */
+  .accent { color: var(--accent); }
+
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 48px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">inam<span>.</span>dev</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#stores">Work</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#platforms">Profiles</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="padding-top: 120px; padding-bottom: 80px; max-width: var(--max-w); margin: 0 auto;">
+  <div class="hero-eyebrow">Available for freelance &amp; contract work</div>
+  <h1 class="hero-title" id="heroTitle"><span id="typedName"></span><span class="cursor" id="cursor"></span></h1>
+  <p class="hero-subtitle"><strong>Senior Shopify Theme Developer</strong> — Liquid, Storefront Implementation &amp; Multi-Market Builds</p>
+  <p class="hero-desc">10+ years building production Shopify stores across B2B, DTC, and international markets. I specialise in custom Liquid architecture, Figma-to-Shopify implementation, and solving theme problems other developers can't.</p>
+  <div class="hero-actions">
+    <a href="#stores" class="btn-primary">View Live Stores</a>
+    <a href="#contact" class="btn-secondary">Start a Project</a>
+  </div>
+  <div class="trust-bar">
+    <div class="trust-item">
+      <div class="trust-number">10<span>+</span></div>
+      <div class="trust-label">Years Experience</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">300<span>+</span></div>
+      <div class="trust-label">Projects Delivered</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">100<span>%</span></div>
+      <div class="trust-label">Job Success Score</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">5<span>★</span></div>
+      <div class="trust-label">Avg Client Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">About</div>
+    <h2 class="section-title">The developer clients come back to</h2>
+    <div class="section-divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm Inam ul Haq — a Shopify theme developer based in Punjab, Pakistan, with over a decade of hands-on storefront implementation experience. I've worked across freelance platforms, two agencies (Dubai and India), and long-term direct client retainers.</p>
+        <p>My work covers the full implementation layer: <strong>custom Liquid theme development</strong>, <strong>Figma and PSD to pixel-perfect Shopify</strong>, <strong>Online Store 2.0 section architecture</strong>, multi-market builds via Shopify Markets, and complex bug diagnosis and resolution.</p>
+        <p>I don't claim marketing outcomes. What I deliver is <strong>clean, maintainable theme code</strong> that works exactly as designed, ships on time, and doesn't create problems for the developers who work on it after me.</p>
+        <p>Clients return for a specific reason: I solve Shopify theme problems other developers walk away from — often within the same session.</p>
+      </div>
+      <div class="about-facts">
+        <div class="fact-row">
+          <div class="fact-icon">🏢</div>
+          <div class="fact-content">
+            <h4>Agency Experience</h4>
+            <p>Solutions Inside Technologies, Dubai (2023–2025) &amp; 10XWeb Solutions, India (2017–2022)</p>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon">🌍</div>
+          <div class="fact-content">
+            <h4>International Store Builds</h4>
+            <p>Delivered stores in English, German, Korean, and Swedish across US, UK, EU, and APAC markets</p>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon">🎓</div>
+          <div class="fact-content">
+            <h4>Education</h4>
+            <p>B.IT, University of Sargodha (2012–2016) · Google AI Essentials · Google Productivity with AI Tools</p>
+          </div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-icon">⚡</div>
+          <div class="fact-content">
+            <h4>Top Rated on Upwork</h4>
+            <p>100% Job Success Score maintained across 10+ years and 300+ completed projects</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-tag">Services</div>
+    <h2 class="section-title">What I build</h2>
+    <p class="section-lead">Implementation-layer Shopify development. No marketing claims. Solid theme architecture, clean Liquid, and reliable delivery.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🧩</div>
+        <h3>Custom Theme Development</h3>
+        <p>Full Shopify theme builds from scratch or base theme. Custom section and block schemas, dynamic templates, metafield integration, and OS 2.0 architecture.</p>
+        <div class="service-tags">
+          <span class="tag">Liquid</span>
+          <span class="tag">OS 2.0</span>
+          <span class="tag">Dawn</span>
+          <span class="tag">Sections</span>
+          <span class="tag">Metafields</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🖼️</div>
+        <h3>Figma / PSD to Shopify</h3>
+        <p>Pixel-accurate translation of design files into responsive Shopify themes. Component-level fidelity, cross-device testing, and clean semantic markup.</p>
+        <div class="service-tags">
+          <span class="tag">Figma</span>
+          <span class="tag">PSD</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">Responsive</span>
+          <span class="tag">JS</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Bug Diagnosis &amp; Fixes</h3>
+        <p>Deep Liquid and JavaScript debugging. Cart and checkout flow stability, theme conflict resolution, and third-party app frontend issues — resolved fast.</p>
+        <div class="service-tags">
+          <span class="tag">Debugging</span>
+          <span class="tag">Cart</span>
+          <span class="tag">Checkout</span>
+          <span class="tag">App Conflicts</span>
+          <span class="tag">JS Errors</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌐</div>
+        <h3>Internationalisation &amp; Markets</h3>
+        <p>Multi-language storefronts, Shopify Markets configuration, subdomain-based locale routing, multi-currency, and localised content structure.</p>
+        <div class="service-tags">
+          <span class="tag">Shopify Markets</span>
+          <span class="tag">Multi-language</span>
+          <span class="tag">Multi-currency</span>
+          <span class="tag">Locales</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Theme Performance</h3>
+        <p>Technical Lighthouse improvements: unused script removal, Liquid render tag optimisation, lazy image loading, and structured template refactoring.</p>
+        <div class="service-tags">
+          <span class="tag">Lighthouse</span>
+          <span class="tag">Core Web Vitals</span>
+          <span class="tag">Lazy Loading</span>
+          <span class="tag">Script Audit</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔌</div>
+        <h3>App Integration (Frontend)</h3>
+        <p>Frontend integration of third-party Shopify apps: reviews widgets, upsell tools, subscription apps, loyalty programmes, and custom form handlers.</p>
+        <div class="service-tags">
+          <span class="tag">App Blocks</span>
+          <span class="tag">Klaviyo</span>
+          <span class="tag">Reviews</span>
+          <span class="tag">Subscriptions</span>
+          <span class="tag">Custom JS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE STORES -->
+<section id="stores">
+  <div class="section-inner">
+    <div class="section-tag">Live Work</div>
+    <h2 class="section-title">Stores built from scratch</h2>
+    <p class="section-lead">Six live stores across four languages, six industries, and four countries. Every one built end-to-end.</p>
+    <div class="stores-grid">
+
+      <a href="https://defheroshop.com" target="_blank" rel="noopener" class="store-card">
+        <span class="store-vertical">B2B · Industrial</span>
+        <div class="store-name">DEF Commerce</div>
+        <div class="store-features">
+          <span class="store-feature">Bulk ordering</span>
+          <span class="store-feature">Fleet client logos</span>
+          <span class="store-feature">Service area pages</span>
+          <span class="store-feature">B2B UX</span>
+        </div>
+        <p class="store-desc">Industrial B2B storefront for diesel exhaust fluid — fleet clients, bulk delivery, dispensing solutions across the US.</p>
+        <div class="store-link">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          defheroshop.com
+        </div>
+      </a>
+
+      <a href="https://bayringer.com" target="_blank" rel="noopener" class="store-card">
+        <span class="store-vertical">DTC · Automotive</span>
+        <div class="store-name">BayRinger</div>
+        <div class="store-features">
+          <span class="store-feature">Video hero</span>
+          <span class="store-feature">Email popup</span>
+          <span class="store-feature">10+ categories</span>
+          <span class="store-feature">Multi-store ecosystem</span>
+        </div>
+        <p class="store-desc">Automotive fluids e-commerce with video background hero, structured multi-category navigation, and promotional capture flow.</p>
+        <div class="store-link">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          bayringer.com
+        </div>
+      </a>
+
+      <a href="https://oonique.com" target="_blank" rel="noopener" class="store-card">
+        <span class="store-vertical">DTC · German Market</span>
+        <div class="store-name">OONIQUE</div>
+        <div class="store-features">
+          <span class="store-feature">German localisation</span>
+          <span class="store-feature">15+ brand collections</span>
+          <span class="store-feature">EU shipping logic</span>
+          <span class="store-feature">Multi-brand catalog</span>
+        </div>
+        <p class="store-desc">Premium knitting kit store for the German market. Multi-brand catalog structure, localised content, and EU shipping threshold logic.</p>
+        <div class="store-link">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          oonique.com
+        </div>
+      </a>
+
+      <a href="https://kr.genosos.com" target="_blank" rel="noopener" class="store-card">
+        <span class="store-vertical">Shopify Markets · APAC</span>
+        <div class="store-name">Genosos KR</div>
+        <div class="store-features">
+          <span class="store-feature">Shopify Markets</span>
+          <span class="store-feature">Subdomain routing</span>
+          <span class="store-feature">Korean + Vietnamese</span>
+          <span class="store-feature">KRW currency</span>
+        </div>
+        <p class="store-desc">Korean jewellery store built with Shopify Markets subdomain-based locale routing for Korea and Vietnam. Full build from scratch.</p>
+        <div class="store-link">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          kr.genosos.com
+        </div>
+      </a>
+
+      <a href="https://citygott.com" target="_blank" rel="noopener" class="store-card">
+        <span class="store-vertical">DTC · Swedish Market</span>
+        <div class="store-name">CityGott</div>
+        <div class="store-features">
+          <span class="store-feature">Swedish localisation</span>
+          <span class="store-feature">Icon category nav</span>
+          <span class="store-feature">Klarna integration</span>
+          <span class="store-feature">Custom Pick & Mix page</span>
+        </div>
+        <p class="store-desc">Swedish candy and snack retailer with custom icon-based category navigation, Klarna payment integration, and a bespoke Pick &amp; Mix page.</p>
+        <div class="store-link">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          citygott.com
+        </div>
+      </a>
+
+      <a href="https://monstersink.com" target="_blank" rel="noopener" class="store-card">
+        <span class="store-vertical">Trade + Retail · UK</span>
+        <div class="store-name">Monsters Ink</div>
+        <div class="store-features">
+          <span class="store-feature">VAT Inc/Ex toggle</span>
+          <span class="store-feature">Trade account system</span>
+          <span class="store-feature">Affiliate programme</span>
+          <span class="store-feature">GBP/USD toggle</span>
+        </div>
+        <p class="store-desc">UK tattoo supply store with trade and retail dual audience. VAT toggle, trade account application, affiliate programme, and multi-currency.</p>
+        <div class="store-link">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          monstersink.com
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="stack">
+  <div class="section-inner">
+    <div class="section-tag">Tech Stack</div>
+    <h2 class="section-title">What I work with</h2>
+    <p class="section-lead">The tools and technologies I use day-to-day on production Shopify stores.</p>
+    <div class="stack-grid">
+      <div class="stack-item">
+        <div class="stack-logo">🛒</div>
+        <div>
+          <div class="stack-name">Liquid</div>
+          <div class="stack-level">Expert</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-logo">⚡</div>
+        <div>
+          <div class="stack-name">JavaScript ES6+</div>
+          <div class="stack-level">Advanced</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-logo">🎨</div>
+        <div>
+          <div class="stack-name">HTML5 / CSS3</div>
+          <div class="stack-level">Expert</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-logo">🖥️</div>
+        <div>
+          <div class="stack-name">Shopify CLI</div>
+          <div class="stack-level">Advanced</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-logo">🎭</div>
+        <div>
+          <div class="stack-name">Figma</div>
+          <div class="stack-level">Advanced</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-logo">🌿</div>
+        <div>
+          <div class="stack-name">Git</div>
+          <div class="stack-level">Intermediate</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-logo">🌏</div>
+        <div>
+          <div class="stack-name">Shopify Markets</div>
+          <div class="stack-level">Advanced</div>
+        </div>
+      </div>
+      <div class="stack-item">
+        <div class="stack-logo">🤖</div>
+        <div>
+          <div class="stack-name">Google AI Tools</div>
+          <div class="stack-level">Certified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="section-tag">Client Reviews</div>
+    <h2 class="section-title">What clients say</h2>
+    <p class="section-lead">Verified reviews from Fiverr and Upwork clients across 15+ countries.</p>
+  </div>
+  <div style="max-width: var(--max-w); margin: 0 auto; padding: 0 24px;">
+    <div class="reviews-scroll">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I have been through a lot of Shopify developers, and most of them couldn't handle this task. Then comes Inam — he handles the task in less than an hour and at a great price!</p>
+        <div class="review-meta">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">amiralinoorani</div>
+            <div class="review-source">Canada · Fiverr</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">He was able to fix my bug issue within a matter of hours when other developers could not. I would definitely recommend his services for anybody with Shopify website issues. He is the truth!</p>
+        <div class="review-meta">
+          <div class="review-avatar">F</div>
+          <div>
+            <div class="review-name">fawadwaziri</div>
+            <div class="review-source">Afghanistan · Fiverr</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">5 star service. Fast responses, very quick delivery and the work completed was exactly what I was looking for. I'd highly recommend him for all your Shopify dev needs.</p>
+        <div class="review-meta">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">jackparrypsn</div>
+            <div class="review-source">United Kingdom · Fiverr</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">This is the third time using this service and received 100% satisfied website editing work. Fabulous work again.</p>
+        <div class="review-meta">
+          <div class="review-avatar">C</div>
+          <div>
+            <div class="review-name">cumani</div>
+            <div class="review-source">New Zealand · Fiverr · 3× repeat client</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Inam-ul-Haq Mayo has been a great asset to my business! He is extremely skilled with Shopify and has creative design skills. He is able to solve any issues.</p>
+        <div class="review-meta">
+          <div class="review-avatar">U</div>
+          <div>
+            <div class="review-name">Ongoing Support Contract · $550</div>
+            <div class="review-source">Upwork</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Exceptional work, fast responses, and very professional to work with. Once again my project was carried out with perfect communication and everything was completed ahead of time.</p>
+        <div class="review-meta">
+          <div class="review-avatar">B</div>
+          <div>
+            <div class="review-name">Bayringer &amp; DEF-Commerce</div>
+            <div class="review-source">Upwork · 81 hrs · $25/hr</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Inam was excellent to work with! Extremely available, responsive, responsible, detail-oriented, and thorough. I highly recommend him and would hire him again in a heartbeat!</p>
+        <div class="review-meta">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Ongoing Shopify Tasks</div>
+            <div class="review-source">Upwork</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I have used this gentleman's services multiple times. He is very good at communicating and very knowledgeable. I'm very happy with his work always! You can trust he will do a great job.</p>
+        <div class="review-meta">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="review-name">lesrice8427</div>
+            <div class="review-source">United States · Fiverr · 2× repeat client</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section id="platforms">
+  <div class="section-inner">
+    <div class="section-tag">Verified Profiles</div>
+    <h2 class="section-title">Find my work on</h2>
+    <p class="section-lead">Platform-verified track record across 10+ years. Every review is real, every rating is earned.</p>
+    <div class="platforms-grid">
+
+      <a href="https://www.upwork.com/freelancers/~014c18e6596a5e8c64" target="_blank" rel="noopener" class="platform-card">
+        <span class="platform-icon">💼</span>
+        <div class="platform-name">Upwork</div>
+        <div class="platform-metric">Top Rated · Since 2016</div>
+        <div class="platform-stats">
+          <div>
+            <div class="platform-stat-value">100%</div>
+            <div class="platform-stat-label">Job Success</div>
+          </div>
+          <div>
+            <div class="platform-stat-value">10+</div>
+            <div class="platform-stat-label">Years Active</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.fiverr.com/s/6YypAaX" target="_blank" rel="noopener" class="platform-card">
+        <span class="platform-icon">⭐</span>
+        <div class="platform-name">Fiverr</div>
+        <div class="platform-metric">Level 2 Seller · Since 2020</div>
+        <div class="platform-stats">
+          <div>
+            <div class="platform-stat-value">5.0</div>
+            <div class="platform-stat-label">Rating</div>
+          </div>
+          <div>
+            <div class="platform-stat-value">100+</div>
+            <div class="platform-stat-label">Orders</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/inamulhaqmayo/" target="_blank" rel="noopener" class="platform-card">
+        <span class="platform-icon">🔗</span>
+        <div class="platform-name">LinkedIn</div>
+        <div class="platform-metric">Professional Profile</div>
+        <div class="platform-stats">
+          <div>
+            <div class="platform-stat-value">10+</div>
+            <div class="platform-stat-label">Yrs Experience</div>
+          </div>
+          <div>
+            <div class="platform-stat-value">300+</div>
+            <div class="platform-stat-label">Projects</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding: 96px 24px;">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <h2>Ready to build something?</h2>
+      <p>Whether it's a full store build, a complex bug, a Figma-to-Shopify conversion, or a multi-market setup — send me the brief and I'll tell you exactly what's involved.</p>
+      <a href="mailto:inam5863@gmail.com" class="contact-email">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        inam5863@gmail.com
+      </a>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="Store owner or agency name">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-row">
+        <label class="form-label">Project Brief</label>
+        <textarea class="form-textarea" placeholder="Describe your Shopify project — theme build, bug fix, customisation, migration, etc."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleFormSubmit(event)">Send Brief</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">inam<span>.</span>dev</div>
+    <div class="footer-copy">Inam ul Haq Mayo · Senior Shopify Theme Developer · Punjab, Pakistan</div>
+    <div class="footer-copy">© 2026 · Available for freelance &amp; contract work</div>
+  </div>
+</footer>
+
+<script>
+  // Typewriter
+  const name = "Inam ul Haq.";
+  const el = document.getElementById('typedName');
+  const cursor = document.getElementById('cursor');
+  let i = 0;
+
+  function type() {
+    if (i < name.length) {
+      el.textContent += name[i];
+      i++;
+      setTimeout(type, i === 1 ? 300 : 60 + Math.random() * 40);
+    } else {
+      cursor.style.animation = 'blink 1s step-end infinite';
+    }
+  }
+
+  window.addEventListener('load', () => setTimeout(type, 600));
+
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Form
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = 'Opening email...';
+    btn.style.background = '#22C55E';
+    
+    const name = document.querySelector('.form-input').value || '';
+    const message = document.querySelector('.form-textarea').value || '';
+    const mailto = `mailto:inam5863@gmail.com?subject=Shopify Project Brief from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
+    window.location.href = mailto;
+    
+    setTimeout(() => {
+      btn.textContent = 'Send Brief';
+      btn.style.background = '';
+    }, 2000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .store-card, .stack-item, .review-card, .platform-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
