@@ -1394,29 +1394,39 @@
 <!-- CONTACT -->
 <section id="contact" style="padding: 96px 24px;">
   <div class="contact-inner">
+    
     <div class="contact-left">
       <h2>Ready to build something?</h2>
-      <p>Whether it's a full store build, a complex bug, a Figma-to-Shopify conversion, or a multi-market setup — send me the brief and I'll tell you exactly what's involved.</p>
+      <p>Whether it's a full store build, a complex bug, or a Figma-to-Shopify conversion — send me the brief.</p>
+
       <a href="mailto:inam5863@gmail.com" class="contact-email">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-        inam5863@gmail.com
+        📧 inam5863@gmail.com
       </a>
     </div>
-    <div class="contact-form">
+
+    <form id="contact-form" class="contact-form">
+      
       <div class="form-row">
         <label class="form-label">Your Name</label>
-        <input type="text" class="form-input" placeholder="Store owner or agency name">
+        <input type="text" class="form-input" name="user_name" placeholder="Store owner or agency name" required>
       </div>
+
       <div class="form-row">
         <label class="form-label">Email</label>
-        <input type="email" class="form-input" placeholder="your@email.com">
+        <input type="email" class="form-input" name="user_email" placeholder="your@email.com" required>
       </div>
+
       <div class="form-row">
         <label class="form-label">Project Brief</label>
-        <textarea class="form-textarea" placeholder="Describe your Shopify project — theme build, bug fix, customisation, migration, etc."></textarea>
+        <textarea class="form-textarea" name="message" placeholder="Describe your Shopify project..." required></textarea>
       </div>
-      <button class="form-submit" onclick="handleFormSubmit(event)">Send Brief</button>
-    </div>
+
+      <button type="submit" class="form-submit" id="submitBtn">
+        Send Brief
+      </button>
+
+    </form>
+
   </div>
 </section>
 
@@ -1496,5 +1506,42 @@
   });
 </script>
 
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script>
+  emailjs.init("5LDRM7eyKRWMoBeQZ"); 
+</script>
+<script>
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const btn = document.getElementById("submitBtn");
+  btn.textContent = "Sending...";
+  btn.disabled = true;
+
+  emailjs.sendForm(
+    "service_040ldxm",     // SERVICE ID
+    "template_fwwx82q",    // TEMPLATE ID
+    "#contact-form"
+  ).then(() => {
+    
+    alert("Message sent successfully!");
+
+    btn.textContent = "Send Brief";
+    btn.disabled = false;
+
+    document.getElementById("contact-form").reset();
+
+  }).catch((error) => {
+    
+    console.log("ERROR:", error);
+    alert("Failed to send message. Try again.");
+
+    btn.textContent = "Send Brief";
+    btn.disabled = false;
+
+  });
+});
+</script>
 </body>
 </html>
